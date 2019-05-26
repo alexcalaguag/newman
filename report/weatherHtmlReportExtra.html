@@ -1,0 +1,2519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Newman Summary Report</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet prefetch" href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
+<style>
+body {
+  padding-top:30px;
+}
+
+body, html {
+  height:100%;
+}
+
+.badge-outline-success {
+    color: #27ae60;
+    border: 1px solid #27ae60;
+    background-color: transparent;
+}
+
+.badge-outline {
+    color: #040411;
+    border: 1px solid #040411;
+    background-color: transparent;
+}
+
+.card {
+    overflow:hidden;
+}
+
+.card-body .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-body .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
+.dyn-height {
+    max-height:350px;
+    overflow-y:auto;
+}
+
+.nav-pills .nav-link.active {
+    background-color: transparent!important;
+}
+
+#topOfScreen {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#topOfScreen:hover {
+  background-color: #28a745;
+}
+
+#openAll:hover {
+  background-color: #28a745;
+}
+
+.custom-tab {
+    padding: 10px 15px;
+    margin-right: 3px;
+    border: solid 1px #fff;
+    border-bottom: none;
+    cursor:pointer;
+}
+.custom-tab .active {
+    border-bottom:solid 1px #032a33;
+}
+
+#execution-data {
+    padding: 10px;
+    border: solid 1px #fff;
+    border-top: none;
+}
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(90deg);
+}
+
+.resultsInfo {
+    color: green;
+    padding-top: 4px;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+        <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+            <li class="nav-item bg-info active" data-toggle="tooltip" title="Click to view the Summary">
+                <a class="nav-link text-white" id="pills-summary-tab" data-toggle="pill" href="#pills-summary" role="tab" aria-controls="pills-summary" aria-selected="true">Summary</a>
+            </li>
+            <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests">
+                <a class="nav-link text-white" id="pills-requests-tab" data-toggle="pill" href="#pills-requests" role="tab" aria-controls="pills-requests" aria-selected="false">Total Requests <span class="badge badge-light">10</span></a>
+            </li>
+            <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests">
+                <a class="nav-link text-white" id="pills-failed-tab" data-toggle="pill" href="#pills-failed" role="tab" aria-controls="pills-failed" aria-selected="false">Failed Tests <span class="badge badge-light">0</span></a>
+            </li>
+            <li class="nav-item bg-warning" data-toggle="tooltip" title="Click to view the Skipped Tests">
+                <a class="nav-link text-white" id="pills-skipped-tab" data-toggle="pill" href="#pills-skipped" role="tab" aria-controls="pills-skipped" aria-selected="false">Skipped Tests <span class="badge badge-light">0</span></a>
+            </li>
+            </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-summary" role="tabcard" aria-labelledby="pills-summary-tab"> 
+<div class="row">
+  <div class="col-md-9 col-lg-12 main">
+   <h1 class="display-2 text-center">Newman Run Dashboard</h1>
+   <h4 class="text-center">Sunday, 26 May 2019 19:46:59</h4>
+   <div class="row">
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-success">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-retweet fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Iterations</h6>
+       <h1 class="display-1">1</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-danger">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-list fa-4x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Assertions</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-info">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-plus-circle fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Failed Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-warning">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-share fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Skipped Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+   </div>
+   <hr>
+    <div class="row">
+    <div class="col">
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">File Information</h5>
+                <span><i class="fas fa-file-code"></i></span><strong> Collection:</strong> Weather API<br>
+                <span><i class="fas fa-file-code"></i></span><strong> Environment:</strong> DEV<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">          
+                <h5 class="card-title text-uppercase text-white text-center bg-info">Collection Description</h5>
+                <div class="dyn-height">
+                    <pre id="description">The HERE Weather API:
+
+* provides weather forecasts and reports on current weather conditions
+* provides information on severe weather alerts
+* provides information about when the sun and moon rise and set, and the phase of the moon
+
+This example set works with version 1.2.4 or higher
+
+Additional information can be found on [developer.here.com](https://developer.here.com/rest-apis/documentation/weather)</pre>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">Timings and Data</h5>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Total run duration:</strong> 4.5s<br>
+                <span><i class="fas fa-database"></i></span><strong> Total data received:</strong> 3.1KB<br>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Average response time:</strong> 423ms<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-inverse">
+                    <tr class="text-center">
+                        <th class="text-uppercase">Summary Item</th>
+                        <th class="text-uppercase">Total</th>
+                        <th class="text-uppercase">Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Requests</td>
+                        <td class="text-center">10</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Prerequest Scripts</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Test Scripts</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Assertions</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Skipped Tests</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    <hr>
+   </div>
+   </div>
+  </div>
+ </div>
+        </div>
+            <div class="tab-pane fade" id="pills-failed" role="tabcard" aria-labelledby="pills-failed-tab">
+
+                <div class="alert alert-success text-uppercase text-center">
+                     <br><br><h1 class="text-center">There are no failed tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-skipped" role="tabcard" aria-labelledby="pills-skipped-tab">
+
+                <div class="alert alert-success text-uppercase text-center">
+                    <br><br><h1 class="text-center">There are no skipped tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-logs" role="tabcard" aria-labelledby="pills-logs-tab">
+
+            </div> 
+            <div class="tab-pane fade" id="pills-requests" role="tabcard" aria-labelledby="pills-requests-tab">
+            
+            <button id="topOfScreen" class="btn btn-outline-success btn-sm" onclick="topFunction()">Go To Top</button>
+            <button id="closeAll" class="btn btn-outline-success btn-sm float-right">Collaspe Folders</button>
+            <button id="openAll" class="btn btn-outline-success btn-sm float-right">Expand Folders</button>
+    
+    <div class="text-uppercase" id="execution-menu">
+        <h6>1 Iteration available to view</h6>
+        <nav class="table-responsive">
+        <ul class="nav nav-tabs">
+        </ul>
+        </nav>
+    </div>
+	<div class="tab-content" id="execution-data">
+            <div id="folder-8ed1161d-0cf1-4d37-b9a1-c3df0659771e" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-8ed1161d-0cf1-4d37-b9a1-c3df0659771e" aria-expanded="false" aria-controls="collapse" id="requests-8ed1161d-0cf1-4d37-b9a1-c3df0659771e" class="collapsed text-white z-block">
+                    Iteration: 1 - Severe Weather Alerts <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-8ed1161d-0cf1-4d37-b9a1-c3df0659771e" class="collapse" aria-labelledby="requests-8ed1161d-0cf1-4d37-b9a1-c3df0659771e">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request severe weather alerts around a city*
+        
+        Severe weather alerts be requested by setting the &#x60;product&#x60; parameter to &#x60;alerts&#x60;, and setting the &#x60;name&#x60; parameter to the required location in the request URL. If no severe weather alerts are present, the API returns an empty array in the &#x60;alerts&#x60; attribute of the JSON response.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **name**  &#x60;text&#x60;
+         \- The name of a city for a weather forecast
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;alerts&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;alerts&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 1209ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>29ba4a76-0162-4a64-9dfc-683252c96492</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:55 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>5a58d1ab-3f2e-4862-b5e9-7f29682bf745</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-b23e9ef3-250e-41f6-9864-7512c8623b54" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-b23e9ef3-250e-41f6-9864-7512c8623b54">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-63deb2b6-592e-4904-a74e-b65e685bdb20" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-63deb2b6-592e-4904-a74e-b65e685bdb20" aria-expanded="false" aria-controls="collapse" id="requests-63deb2b6-592e-4904-a74e-b65e685bdb20" class="collapsed text-white z-block">
+                    Iteration: 1 - Weather Conditions at a specified Latitude and Longitude <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-63deb2b6-592e-4904-a74e-b65e685bdb20" class="collapse" aria-labelledby="requests-63deb2b6-592e-4904-a74e-b65e685bdb20">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request current weather conditions using latitude and longitude*
+        
+        Weather observations are requested by setting the &#x60;product&#x60; parameter to &#x60;observation&#x60;, and specifying the location using the &#x60;latitude&#x60; and &#x60;longitude&#x60; parameters in the request URL. The readings can be restricted to one location by adding &#x60;oneobservation&#x3D;true&#x60; to the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **latitude**  &#x60;number&#x60;
+         \- Latitude of the weather forecast.    e.g. &#x60;52.5159&#x60;
+        
+        * **longitude**  &#x60;number&#x60;
+         \- Longitude of the weather forecast.    e.g. &#x60;13.3777&#x60;
+        
+        * **oneobservation**  &#x60;enum&#x60;
+         \- A flag to indicate only one observation is required.
+        
+         Valid values are : &#x60;true&#x60;, &#x60;false&#x60;
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;latitude&#x3D;52.516&amp;longitude&#x3D;13.389&amp;oneobservation&#x3D;true&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;latitude&#x3D;52.516&amp;longitude&#x3D;13.389&amp;oneobservation&#x3D;true&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 166ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>5ff3fe66-b9ea-4825-baed-f4a63b47d86e</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:55 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>5ba30fcb-bb36-43d5-93e9-bae108ebafb2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-503fd5c8-cf06-4034-a63b-3897f8770f77" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-503fd5c8-cf06-4034-a63b-3897f8770f77">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-81f69731-de4d-4bb6-b694-3d7e8de5ba6f" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-81f69731-de4d-4bb6-b694-3d7e8de5ba6f" aria-expanded="false" aria-controls="collapse" id="requests-81f69731-de4d-4bb6-b694-3d7e8de5ba6f" class="collapsed text-white z-block">
+                    Iteration: 1 -  Hourly Forecast <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-81f69731-de4d-4bb6-b694-3d7e8de5ba6f" class="collapse" aria-labelledby="requests-81f69731-de4d-4bb6-b694-3d7e8de5ba6f">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request an hour-by-hour seven day weather forecast*
+        
+        An hourly weather forecast is requested by setting the &#x60;product&#x60; parameter to &#x60;forecast_hourly&#x60; , and setting the &#x60;name&#x60; parameter to the required location in the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **name**  &#x60;text&#x60;
+         \- The name of a city for a weather forecast
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_hourly&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_hourly&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 383ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>a8c81bc5-3816-4d66-8965-348e7196ba5c</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:55 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>e4cbd240-fdae-485a-a1e3-4bd4bd3209f4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-968afaca-d582-4b0b-b408-77a638ec77fb" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-968afaca-d582-4b0b-b408-77a638ec77fb">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-00f6fbf2-6879-45d5-8859-444a4bbd1f60" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-00f6fbf2-6879-45d5-8859-444a4bbd1f60" aria-expanded="false" aria-controls="collapse" id="requests-00f6fbf2-6879-45d5-8859-444a4bbd1f60" class="collapsed text-white z-block">
+                    Iteration: 1 - Extended Seven Day Forecast <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-00f6fbf2-6879-45d5-8859-444a4bbd1f60" class="collapse" aria-labelledby="requests-00f6fbf2-6879-45d5-8859-444a4bbd1f60">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request a full seven day weather forecast*
+        
+        A full seven day forecast for a city is requested by setting the &#x60;product&#x60; parameter to &#x60;forecast_7days&#x60;, and setting the &#x60;name&#x60; parameter to the required location in the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **name**  &#x60;text&#x60;
+         \- The name of a city for a weather forecast
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_7days&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_7days&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 382ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>90c9630e-7938-435c-9069-2e700bea45aa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:56 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>991d617a-50ee-4922-8d40-3471353a1189</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-0f66609c-777d-4fb4-870a-ad111ff2a90a" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-0f66609c-777d-4fb4-870a-ad111ff2a90a">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-fe6d03b4-e2bf-4d36-816c-0671593908fc" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-fe6d03b4-e2bf-4d36-816c-0671593908fc" aria-expanded="false" aria-controls="collapse" id="requests-fe6d03b4-e2bf-4d36-816c-0671593908fc" class="collapsed text-white z-block">
+                    Iteration: 1 - Weather Conditions using Zip Codes <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-fe6d03b4-e2bf-4d36-816c-0671593908fc" class="collapse" aria-labelledby="requests-fe6d03b4-e2bf-4d36-816c-0671593908fc">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request current weather conditions using a US Zip Codes*
+        
+        Weather observations are requested by setting the &#x60;product&#x60; parameter to &#x60;observation&#x60;, and specifying the U.S. zip code using the &#x60;zipcode&#x60; parameter in the request URL. The readings can be restricted to one location by adding &#x60;oneobservation&#x3D;true&#x60; to the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **zipcode**  &#x60;number&#x60;
+         \- The US zipcode for a weather forecast. United States only.
+        
+        * **oneobservation**  &#x60;enum&#x60;
+         \- A flag to indicate only one observation is required.
+        
+         Valid values are : &#x60;true&#x60;, &#x60;false&#x60;
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;zipcode&#x3D;10025&amp;oneobservation&#x3D;true&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;zipcode&#x3D;10025&amp;oneobservation&#x3D;true&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 384ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>0a9f6e1a-0247-47f5-bdb3-4ed4afcc4867</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:56 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>2f736ca1-552c-4171-841b-3adaa3dc565f</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-3341c4fe-8c44-4abe-8e26-c270663034e4" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-3341c4fe-8c44-4abe-8e26-c270663034e4">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-34dd3007-cb4a-454b-a255-b2ef9292ff80" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-34dd3007-cb4a-454b-a255-b2ef9292ff80" aria-expanded="false" aria-controls="collapse" id="requests-34dd3007-cb4a-454b-a255-b2ef9292ff80" class="collapsed text-white z-block">
+                    Iteration: 1 - Weather Conditions for a City <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-34dd3007-cb4a-454b-a255-b2ef9292ff80" class="collapse" aria-labelledby="requests-34dd3007-cb4a-454b-a255-b2ef9292ff80">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request current weather observations around a named location*
+        
+        Weather observations are requested by setting the &#x60;product&#x60;parameter to &#x60;observation&#x60;, and setting the &#x60;name&#x60; parameter to the required location in the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **name**  &#x60;text&#x60;
+         \- The name of a city for a weather forecast
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 389ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>20b43f23-df83-4ee0-b913-07721d0f95d7</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:56 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>45f367ea-d279-4ef3-ac0d-6050c9c58371</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-c4979654-3193-401b-8d7e-1f789e58d72c" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-c4979654-3193-401b-8d7e-1f789e58d72c">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-0ec80eec-5a5f-4c60-a06c-d6f5361fbf6c" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-0ec80eec-5a5f-4c60-a06c-d6f5361fbf6c" aria-expanded="false" aria-controls="collapse" id="requests-0ec80eec-5a5f-4c60-a06c-d6f5361fbf6c" class="collapsed text-white z-block">
+                    Iteration: 1 - Changing from the Metric System <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-0ec80eec-5a5f-4c60-a06c-d6f5361fbf6c" class="collapse" aria-labelledby="requests-0ec80eec-5a5f-4c60-a06c-d6f5361fbf6c">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request temperatures in Fahrenheit and wind speeds in mph*
+        
+        The scale used for the weather readings is altered by adding&#x60;metric&#x3D;false&#x60; to the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **latitude**  &#x60;number&#x60;
+         \- Latitude of the weather forecast.    e.g. &#x60;52.5159&#x60;
+        
+        * **longitude**  &#x60;number&#x60;
+         \- Longitude of the weather forecast.    e.g. &#x60;13.3777&#x60;
+        
+        * **oneobservation**  &#x60;enum&#x60;
+         \- A flag to indicate only one observation is required.
+        
+         Valid values are : &#x60;true&#x60;, &#x60;false&#x60;
+        
+        * **metric**  &#x60;enum&#x60;
+         \- Whether to return data using metric or imperial measurements
+        
+         Valid values are : &#x60;true&#x60;, &#x60;false&#x60;
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;latitude&#x3D;41.9786&amp;longitude&#x3D;-87.9047&amp;oneobservation&#x3D;true&amp;metric&#x3D;false&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;latitude&#x3D;41.9786&amp;longitude&#x3D;-87.9047&amp;oneobservation&#x3D;true&amp;metric&#x3D;false&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 386ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>29a34afa-44b8-44a5-989a-569cec0c1933</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:57 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>d607b425-229f-428b-9bf8-cc866752a274</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-71aedc72-faa9-4ee2-8f9f-1a96778c8808" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-71aedc72-faa9-4ee2-8f9f-1a96778c8808">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-ccc204a2-62c9-4e01-8728-9f8ce2f487d0" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-ccc204a2-62c9-4e01-8728-9f8ce2f487d0" aria-expanded="false" aria-controls="collapse" id="requests-ccc204a2-62c9-4e01-8728-9f8ce2f487d0" class="collapsed text-white z-block">
+                    Iteration: 1 - Seven Day Forecast <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-ccc204a2-62c9-4e01-8728-9f8ce2f487d0" class="collapse" aria-labelledby="requests-ccc204a2-62c9-4e01-8728-9f8ce2f487d0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request a simplified seven day weather forecast*
+        
+        A simple seven day forecast is requested by setting the &#x60;product&#x60; parameter to &#x60;forecast_7days_simple&#x60;, and setting the &#x60;name&#x60; parameter to the required location in the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **name**  &#x60;text&#x60;
+         \- The name of a city for a weather forecast
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_7days_simple&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_7days_simple&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 242ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>566803e4-f1f6-4464-a7a6-4e700e16f256</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:57 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>e00fe34f-c889-4ad1-a509-3ab33bb01fda</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-3f762e80-520b-493c-8317-7705cd522c3f" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-3f762e80-520b-493c-8317-7705cd522c3f">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-f45a0477-1e86-4f2c-879f-1036449fd368" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-f45a0477-1e86-4f2c-879f-1036449fd368" aria-expanded="false" aria-controls="collapse" id="requests-f45a0477-1e86-4f2c-879f-1036449fd368" class="collapsed text-white z-block">
+                    Iteration: 1 - Sunrise and Sunset <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-f45a0477-1e86-4f2c-879f-1036449fd368" class="collapse" aria-labelledby="requests-f45a0477-1e86-4f2c-879f-1036449fd368">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request information on when the sun and moon will rise and set*
+        
+        Information about sunrise, sunset and the phases of the moon is requested by adding the &#x60;product&#x60; parameter to &#x60;forecast_astronomy&#x60;, and setting the &#x60;name&#x60; parameter to the required location in the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **name**  &#x60;text&#x60;
+         \- The name of a city for a weather forecast
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_astronomy&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;forecast_astronomy&amp;name&#x3D;Chicago&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 313ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>053a4457-0dee-465e-9f9b-7e258b6677de</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:57 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>4f4e7f0d-94fd-4fbe-890f-1b6ddd1fccb1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-547ec838-2d10-44ae-bc34-f983beb01160" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-547ec838-2d10-44ae-bc34-f983beb01160">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+            <div id="folder-4e225880-d226-404e-8608-0d8b6c20792a" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-4e225880-d226-404e-8608-0d8b6c20792a" aria-expanded="false" aria-controls="collapse" id="requests-4e225880-d226-404e-8608-0d8b6c20792a" class="collapsed text-white z-block">
+                    Iteration: 1 - Multi-Language Support <i class="float-lg-right fa fa-chevron-down"></i>
+                </a>
+                    </div>
+                    <div id="collapse-4e225880-d226-404e-8608-0d8b6c20792a" class="collapse" aria-labelledby="requests-4e225880-d226-404e-8608-0d8b6c20792a">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code id="description">*Request current weather conditions in a foreign language*
+        
+        The language of the weather report is altered by adding the &#x60;language&#x60; parameter to the request URL.
+        
+        
+        
+        * **product**  &#x60;enum&#x60;
+         \- The type of information to request
+        
+         Valid values are : &#x60;observation&#x60;, &#x60;forecast_7days&#x60;, &#x60;forecast_7days_simple&#x60;, &#x60;forecast_hourly&#x60;, &#x60;forecast_astronomy&#x60;, &#x60;alerts&#x60;, &#x60;nws_alerts&#x60;
+        
+        * **latitude**  &#x60;number&#x60;
+         \- Latitude of the weather forecast.    e.g. &#x60;52.5159&#x60;
+        
+        * **longitude**  &#x60;number&#x60;
+         \- Longitude of the weather forecast.    e.g. &#x60;13.3777&#x60;
+        
+        * **oneobservation**  &#x60;enum&#x60;
+         \- A flag to indicate only one observation is required.
+        
+         Valid values are : &#x60;true&#x60;, &#x60;false&#x60;
+        
+        * **language**  &#x60;enum&#x60;
+         \- The language for the observations within the forecast.
+        
+         Valid values are : &#x60;af-ZA&#x60; - Afrikaans, &#x60;sq&#x60; - Albanian, &#x60;am-ET&#x60; - Amharic, &#x60;ar&#x60; - Arabic, &#x60;as-IN&#x60; - Assamese, &#x60;az-AZ&#x60; - Azerbaijani, &#x60;eu&#x60; - Basque, &#x60;be&#x60; - Belarusian, &#x60;bn-BD&#x60; - Bengali-bd, &#x60;bn&#x60; - Bengali, &#x60;bs-BA&#x60; - Bosnian, &#x60;bg-BG&#x60; - Bulgarian, &#x60;ca&#x60; - Catalan, &#x60;zh-CN&#x60; - Chinese (PRC), &#x60;zh-HK&#x60; - Chinese (HK), &#x60;zh-TW&#x60; - Chinese (TW), &#x60;hr-HR&#x60; - Croatian, &#x60;cs-CZ&#x60; - Czech, &#x60;da-DK&#x60; - Danish, &#x60;nl-NL&#x60; - Dutch, &#x60;en&#x60; - English, &#x60;en-US&#x60; - English (US), &#x60;et-EE&#x60; - Estonian, &#x60;fa&#x60; - Farsi, &#x60;fa-AF&#x60; - Farsi-af, &#x60;fi-FI&#x60; - Finnish, &#x60;fr-CA&#x60; - French (CA), &#x60;fr&#x60; - French, &#x60;gl&#x60; - Galician, &#x60;ka-GE&#x60; - Georgian, &#x60;de&#x60; - German, &#x60;el-GR&#x60; - Greek, &#x60;gu-IN&#x60; - Gujarati, &#x60;ha&#x60; - Hausa, &#x60;he-IL&#x60; - Hebrew, &#x60;hi-IN&#x60; - Hindi, &#x60;hu-HU&#x60; - Hungarian, &#x60;is-IS&#x60; - Icelandic, &#x60;ig-NG&#x60; - Igbo, &#x60;id-ID&#x60; - Indonesian, &#x60;it&#x60; - Italian, &#x60;ja-JP&#x60; - Japanese, &#x60;kn-IN&#x60; - Kannada, &#x60;ks-IN&#x60; - Kashmiri, &#x60;kk-KZ&#x60; - Kazakh, &#x60;km-KH&#x60; - Khmer, &#x60;ky-KG&#x60; - Kirghiz, &#x60;ko-KR&#x60; - Korean, &#x60;lo-LA&#x60; - Lao, &#x60;lv-LV&#x60; - Latvian, &#x60;ln&#x60; - Lingala, &#x60;lt-LT&#x60; - Lithuanian, &#x60;mk-MK&#x60; - Macedonian, &#x60;mg-MG&#x60; - Malagasy, &#x60;ms-MY&#x60; - Malay, &#x60;ml-IN&#x60; - Malayalam, &#x60;mr-IN&#x60; - Marathi, &#x60;mn-MN&#x60; - Mongolian, &#x60;no-NO&#x60; - Norwegian, &#x60;or-IN&#x60; - Oriya, &#x60;pl-PL&#x60; - Polish, &#x60;pt-BR&#x60; - Portuguese (BR), &#x60;pt-PT&#x60; - Portuguese (PT), &#x60;pa&#x60; - Punjabi, &#x60;ps&#x60; - Pushto, &#x60;ro-RO&#x60; - Romanian, &#x60;ru-RU&#x60; - Russian, &#x60;sr-YU&#x60; - Serbian, &#x60;st&#x60; - Sesotho, &#x60;si-LK&#x60; - Sinhala, &#x60;sk-SK&#x60; - Slovak, &#x60;sl-SL&#x60; - Slovene, &#x60;es-ES&#x60; - Spanish, &#x60;es-US&#x60; - Spanish (US), &#x60;sw&#x60; - Swahili, &#x60;sv&#x60; - Swedish, &#x60;tl-PH&#x60; - Tagalog, &#x60;ta&#x60; - Tamil, &#x60;te-IN&#x60; - Telugu, &#x60;th-TH&#x60; - Thai, &#x60;tg-TJ&#x60; - Tajik, &#x60;tr-TR&#x60; - Turkish, &#x60;tk&#x60; - Turkmen, &#x60;uk-UA&#x60; - Ukrainian, &#x60;ur&#x60; - Urdu, &#x60;uz-UZ&#x60; - Uzbek, &#x60;vi-VN&#x60; - Vietnamese, &#x60;xh&#x60; - Xhosa, &#x60;yo&#x60; - Yoruba, &#x60;zu&#x60; - Zulu
+        
+        * **app_id**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_id&#x60; with every request.
+        
+        * **app_code**  &#x60;text&#x60;
+         \- A 20 byte Base64 URL-safe encoded string used for the authentication of the client application.    You must include an &#x60;app_code&#x60; with every request.</code>
+                                        </div>
+                                    </div>                    
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;latitude&#x3D;48.728&amp;longitude&#x3D;2.389&amp;oneobservation&#x3D;true&amp;language&#x3D;fr&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}" target="_blank">https://weather.cit.api.here.com/weather/1.0/report.json?product&#x3D;observation&amp;latitude&#x3D;48.728&amp;longitude&#x3D;2.389&amp;oneobservation&#x3D;true&amp;language&#x3D;fr&amp;app_id&#x3D;{{YOUR_APP_ID}}&amp;app_code&#x3D;{{YOUR_APP_CODE}}</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 401 - Unauthorized</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 383ms</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 317B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5><strong>0 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.14.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>03854f05-b2f2-4d90-a377-2860b420d2d2</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>weather.cit.api.here.com</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">accept-encoding</td>
+                                                        <td>gzip, deflate</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Sun, 26 May 2019 22:46:59 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Server</td>
+                                                    <td>Apache-Coyote/1.1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-NLP-TID</td>
+                                                    <td>f6073381-2ca4-43e7-9d22-0b7904d8b172</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>317</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-f6b63db2-dc3e-4e71-879e-6c677099b7b9" class="prettyPrint">{&quot;Type&quot;:&quot;Unauthorized&quot;,&quot;Message&quot;:[&quot;This is not a valid app_id and app_code pair. Please verify that the values are not swapped between the app_id and app_code and the values provisioned by HERE (either by your customer representative or via http://developer.here.com/myapps) were copied correctly into the request.&quot;]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-f6b63db2-dc3e-4e71-879e-6c677099b7b9">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    </div>
+                </div>      
+                </div>
+            </div>
+            </div>   
+        </div>      
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+$(document).ready( function () {
+    $('#myTable-b23e9ef3-250e-41f6-9864-7512c8623b54').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-503fd5c8-cf06-4034-a63b-3897f8770f77').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-968afaca-d582-4b0b-b408-77a638ec77fb').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-0f66609c-777d-4fb4-870a-ad111ff2a90a').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-3341c4fe-8c44-4abe-8e26-c270663034e4').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-c4979654-3193-401b-8d7e-1f789e58d72c').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-71aedc72-faa9-4ee2-8f9f-1a96778c8808').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-3f762e80-520b-493c-8317-7705cd522c3f').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-547ec838-2d10-44ae-bc34-f983beb01160').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+$(document).ready( function () {
+    $('#myTable-f6b63db2-dc3e-4e71-879e-6c677099b7b9').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger : 'hover'
+    })
+})
+</script>
+
+<script>
+$('#openAll').on('click', function(e) {
+    $('#folder-ac566f4d-a285-4d39-af64-59b8ae725100').removeClass('collapsed')
+    $('#folder-collapse-ac566f4d-a285-4d39-af64-59b8ae725100').addClass('show')
+})
+</script>
+
+<script>
+$('#closeAll').on('click', function(e) {
+    $('#folder-ac566f4d-a285-4d39-af64-59b8ae725100').addClass('collapsed')
+    $('#folder-collapse-ac566f4d-a285-4d39-af64-59b8ae725100').removeClass('show')
+})
+</script>
+
+<script>
+    function isJSON(data) 
+{
+    var ret = true;
+    try {
+            JSON.parse(data);
+    }catch(e) {
+            ret = false;
+    }
+    return ret;
+}
+
+$(".prettyPrint").each(function () {        
+        var data = $(this).text();
+        // Verify whether data is JSON
+        if(isJSON(data))
+        {
+                obj = JSON.parse(data);
+                data = JSON.stringify(obj, null, 2);
+        }
+        $(this).text(data);
+});
+</script>
+
+
+<!-- Copy Response Body To Clipboard -->
+<script>
+    var clipboard = new ClipboardJS('.copyButton');
+    
+    clipboard.on('success', function(e) {        
+        e.clearSelection();
+        $(".copyButton").addClass("bg-success text-white")
+        e.trigger.textContent = '✔ Copied!';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-success text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+    clipboard.on('error', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-danger text-white")
+        e.trigger.textContent = '✗ Not Copied';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-danger text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+
+</script>
+
+<!-- Render the Description Markdown -->
+<script>
+    const remarkable = new Remarkable();
+    
+    const descriptions = document.querySelectorAll("#description");
+    descriptions.forEach(description => {
+        description.innerHTML = renderHtmlFromMarkdown(description.textContent);
+    });
+    function renderHtmlFromMarkdown(markdown) {
+        return remarkable.render(trim(markdown));
+    }
+    function trim(string) {
+        return string ? string.replace(/^ +| +$/gm, "") : string;
+    }
+</script>
+
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("topOfScreen").style.display = "block";
+    document.getElementById("openAll").style.display = "none";
+    document.getElementById("closeAll").style.display = "none";
+  } else {
+    document.getElementById("topOfScreen").style.display = "none";
+    document.getElementById("openAll").style.display = "block";
+    document.getElementById("closeAll").style.display = "block";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<script type="text/javascript">
+    "use strict";
+
+window.onload = function () {
+
+  // hides all blocks of response
+  var allItems = document.querySelectorAll('[class*=iteration-]');
+  allItems.forEach(function(elem){
+    elem.style.display = 'none';
+  });
+
+   
+  let totalIterations = 1;
+   
+
+  let menu = document.querySelector('#execution-menu .nav');
+
+  for(var i = 0; i < totalIterations; i++)
+  {
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode((i + 1)));
+    li.setAttribute('id', 'iteration-' + i);
+    li.classList.add("custom-tab");
+
+    li.addEventListener('click', function() {
+
+      let allItems = document.querySelectorAll('[class*=iteration-]');
+      allItems.forEach(function(elem) {
+        elem.style.display = 'none';
+      })
+
+      let allMenus = document.querySelectorAll('[id*=iteration-');
+      allMenus.forEach(function(elem){
+        elem.style.borderBottom = 'none';
+      })
+
+      this.style.borderBottom = 'solid 1px #032a33';
+
+      let items = document.querySelectorAll("." + this.id);
+      items.forEach(function(elem) {
+        elem.style.display = elem.style.display == 'block' ? 'none' : 'block';
+      })
+    });
+
+    menu.appendChild(li);
+  }
+
+    //shows first tab data
+  document.getElementById('iteration-0').click();
+}
+</script>
