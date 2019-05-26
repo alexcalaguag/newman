@@ -1,0 +1,31 @@
+{
+  "name": "tool-newman",
+  "version": "1.0.0",
+  "description": "Ferramenta para realizar a execução do newman",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexcalaguag/newman.git"
+  },
+  "keywords": [
+    "Newman",
+    "Report"
+  ],
+  "author": "Alex Gavilan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexcalaguag/newman/issues"
+  },
+  "homepage": "https://github.com/alexcalaguag/newman#readme",
+  "dependencies": {
+    "cassandra-driver": "^4.1.0",
+    "newman": "^4.5.0",
+    "newman-reporter-html": "^1.0.3",
+    "newman-reporter-htmlextra": "^1.7.3",
+    "promise": "^8.0.3",
+    "properties-reader": "0.0.16"
+  }
+}
